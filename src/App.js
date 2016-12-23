@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Link } from 'react-router'
 
-/*
 class App extends Component {
   render() {
       function formatName(user) {
@@ -17,7 +17,12 @@ class App extends Component {
 
       function getGreeting(user) {
           if (user) {
-              return <h1>Hello, {formatName(user)}!</h1>;
+              return (
+                  <div>
+                      <h1>Hello, {formatName(user)}!</h1>
+                      <h3>Components</h3>
+                  </div>
+              )
           }
           return <h1>Hello, Stranger.</h1>;
       }
@@ -30,61 +35,20 @@ class App extends Component {
         </div>
         <div className="App-intro">
             {getGreeting(user)}
+            <ul role="nav" className="list-style">
+                <li><Link to="/FilterableProductTable">Filterable Product Table</Link></li>
+                <li><Link to="/Calculator">Calculator</Link></li>
+                <li><Link to="/Timer">Timer</Link></li>
+                <li><Link to="/LoginControl">Login Control</Link></li>
+                <li><Link to="/Mail">Mail</Link></li>
+                <li><Link to="/ListComponent">List Component</Link></li>
+                <li><Link to="/NameForm">Name Form</Link></li>
+            </ul>
         </div>
 
       </div>
     );
   }
-}
-*/
-
-class Clock extends Component {
-    constructor(props){
-        super(props);
-        this.state = {date : new Date()};
-    }
-
-
-    render(){
-        return (
-            <div>
-                <h1>Hello, world!</h1>
-                <FormattedDate date = {this.state.date}/>
-                <FormattedDate date = {this.state.date} />
-            </div>
-        );
-    }
-    componentDidMount(){
-        this.timerID = setInterval(
-            () => this.tick(),1000
-        );
-    }
-    componentWillUnmount(){
-        clearInterval(this.timerID);
-    }
-    tick(){
-        this.setState({
-           date: new Date()
-        });
-    }
-}
-function FormattedDate(props){
-    return <h2>It is {props.date.toLocaleString()}</h2>
-}
-
-//Functional Component
-function Welcome(props){
-    return <h2> Welcome {props.name} </h2>;
-}
-function App (){
-    return (
-        <div>
-            <Clock />
-            <Clock />
-            <Clock />
-        </div>
-    );
-
 }
 
 export default App;
